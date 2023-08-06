@@ -1,13 +1,13 @@
 import { getDatabaseItems } from "@/cms/notionClient";
 
-interface ParsedDatabaseItemType {
-  id: string;
-  cover: string;
-  icon: unknown;
-  tags: unknown[];
-  published: string;
-  description: string;
-  title: string;
+export interface ParsedDatabaseItemType {
+  id?: string;
+  cover?: string;
+  icon?: unknown;
+  tags?: unknown[];
+  published?: string;
+  description?: string;
+  title?: string;
 }
 
 // [util type]: return 값의 타입
@@ -17,15 +17,28 @@ export const parseDatabaseItems = (items: Awaited<ReturnType<typeof getDatabaseI
     if (!('properties' in item)) return acc;
 
     const { id, icon, cover } = item;
-    const { tags,작성일, 설명, 이름 } = item.properties
+    const { Tags, Created, Description, Name } = item.properties;
 
-    const parsedCover = cover.
+    const parsedCover = cover?.type === "file" ? cover.file.url : cover?.external.url ?? "";
+    const published =
+      (Created.type === "date" ? Created.date?.start : "") ?? "";
+    const description =
+      (Description.type === "rich_text"
+        ? Description.rich_text[0]?.plain_text
+        : "") ?? "";
+    const title = (Name.type === "title" ? Name.title[0]?.plain_text : "") ?? "";
+    const tags = Tags.type === "multi_select" ? Tags.multi_select : [];
+
     const parsedResult: ParsedDatabaseItemType = {
-      id, icon
+      id,
+      icon,
+      cover: parsedCover,
+      published,
+      description,
+      title,
+      tags,
     };
 
-    return [
-      ...acc,
-    ];
+    return [...acc, parsedResult];
   }, []);
 };
