@@ -6,8 +6,6 @@ const Home = () => {
   return (
     <>
       <div>HOME</div>
-      <div>HOME</div>
-      <div>HOME</div>
     </>
   );
 };
@@ -25,8 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
   if (!process.env.DATABASE_ID) throw new Error("DATABASE_ID is not defined");
   const databaseItems = await getDatabaseItems(process.env.DATABASE_ID);
   
-  console.log("databaseItems >>", databaseItems); // TODO: 왜안되지!!!
-  // const parsedDatabaseItems = parseDatabaseItems(databaseItems)
+  console.log("databaseItems >>", databaseItems);
   return {
     props: {},
   }; 
