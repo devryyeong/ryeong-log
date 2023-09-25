@@ -20,7 +20,7 @@ export const getDatabaseItems = async (databaseId: string) => {
     },
     sorts: [
       {
-        property: "Created",
+        property: "Date",
         direction: "descending",
       },
     ],
