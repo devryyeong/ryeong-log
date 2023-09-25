@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import { parseDatabaseItems } from "@/utils/parseDatabaseItem";
 import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
 import HeroSection from "@/components/intro/HeroSection";
+import CardSection from "@/components/intro/CardSection";
 
 interface HomeProps {
   databaseItems: ParsedDatabaseItemType[]
@@ -11,7 +12,8 @@ interface HomeProps {
 const Home = ({ databaseItems }: HomeProps) => {
   return (
     <>
-      <HeroSection/>
+      <HeroSection />
+      <CardSection cardItems={databaseItems}/>
     </>
   );
 };
