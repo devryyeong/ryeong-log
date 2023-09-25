@@ -2,6 +2,7 @@ import { getDatabaseItems } from "@/cms/notionClient";
 import { GetStaticProps } from "next";
 import { parseDatabaseItems } from "@/utils/parseDatabaseItem";
 import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
+import HeroSection from "@/components/intro/HeroSection";
 
 interface HomeProps {
   databaseItems: ParsedDatabaseItemType[]
@@ -10,7 +11,7 @@ interface HomeProps {
 const Home = ({ databaseItems }: HomeProps) => {
   return (
     <>
-      <div>HOME</div>
+      <HeroSection/>
     </>
   );
 };
