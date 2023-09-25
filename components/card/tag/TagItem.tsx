@@ -17,7 +17,7 @@ const TagItem = ({ tagItem }: TagItemProps) => {
           className="hover:underline px-2 py-1 rounded-md font-light"
           style={{ backgroundColor: COLOR_TABLE[color], }}
         >
-          #{name}
+          {name}
         </a>
       </Link>
     </li>

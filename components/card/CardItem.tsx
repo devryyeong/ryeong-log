@@ -13,9 +13,9 @@ const CardItem = ({ cardItem }: CardItemProps) => {
   const { id, icon, cover, title, description, tags, published } = cardItem;
 
   return (
-    <li className="rounded-2xl overflow-hidden shadow-lg group">
+    <li className="flex flex-col rounded-2xl overflow-hidden shadow-lg group">
       <Link href={`blog/${id}`}>
-        <a>
+        <a className="flex-grow">
           <div className="relative aspect-[1.3/1]">
             <Image
               src={cover}
@@ -24,8 +24,8 @@ const CardItem = ({ cardItem }: CardItemProps) => {
               className="group-hover:scale-105 transition-transform"
             />
           </div>
-          <div className="flex flex-col gap-5 p-6">
-            <h4 className="flex flex-row items-center gap-1 font-semibold text-2xl group-hover:text-sky-600 transition-colors">
+          <div className="flex flex-col gap-4 p-4">
+            <h4 className="flex flex-row items-center gap-1 font-bold text-2xl group-hover:text-sky-600 transition-colors">
               <IconRenderer icon={icon} /> {title}
             </h4>
             {description ? (
@@ -35,7 +35,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
           </div>
         </a>
       </Link>
-      <TagList tags={tags} />
+      {tags?.length >=0 ? <TagList tags={tags} /> : null}
     </li>
   );
 }
