@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import CardList from "../card/CardList";
 import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
 

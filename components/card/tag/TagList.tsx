@@ -1,6 +1,5 @@
-import React from "react";
-import TagItem from "./tagItem";
 import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
+import TagItem from "./tagItem";
 
 interface TagListProps {
   tags: ParsedDatabaseItemType["tags"];

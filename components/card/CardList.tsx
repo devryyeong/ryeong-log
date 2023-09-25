@@ -1,6 +1,5 @@
-import React from 'react'
-import CardItem from "./CardItem";
 import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
+import CardItem from "./CardItem";
 
 interface CardListProps {
   cardItems: ParsedDatabaseItemType[];

@@ -1,4 +1,3 @@
-import React from 'react'
 import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
 import Image from "next/image";
 

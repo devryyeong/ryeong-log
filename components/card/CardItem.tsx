@@ -1,7 +1,6 @@
 import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
-import React from 'react'
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import IconRenderer from "./IconRenderer";
 import TagList from "./tag/TagList";
 

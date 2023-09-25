@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import IconButton from "../common/IconButton";
 import { GrSearch } from 'react-icons/gr';

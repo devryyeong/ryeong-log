@@ -1,9 +1,8 @@
 import { getDatabaseItems } from "@/cms/notionClient";
-import { GetStaticProps } from "next";
-import { parseDatabaseItems } from "@/utils/parseDatabaseItem";
-import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
-import HeroSection from "@/components/intro/HeroSection";
 import CardSection from "@/components/intro/CardSection";
+import HeroSection from "@/components/intro/HeroSection";
+import { ParsedDatabaseItemType, parseDatabaseItems } from "@/utils/parseDatabaseItem";
+import { GetStaticProps } from "next";
 
 interface HomeProps {
   databaseItems: ParsedDatabaseItemType[]
