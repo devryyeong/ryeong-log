@@ -3,6 +3,7 @@ import React from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import IconRenderer from "./IconRenderer";
+import TagList from "./tag/TagList";
 
 interface CardItemProps {
   cardItem: ParsedDatabaseItemType;
@@ -34,7 +35,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
           </div>
         </a>
       </Link>
-      {/* tags */}
+      <TagList tags={tags} />
     </li>
   );
 }
