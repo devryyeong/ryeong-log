@@ -15,7 +15,7 @@ export interface ParsedDatabaseItemType {
 export const parseDatabaseItems = (items: Awaited<ReturnType<typeof getDatabaseItems>>) => {
   const parsedItems = items.reduce<ParsedDatabaseItemType[]>((acc, item) => {
     // 타입 가드
-    if (!("properties" in item)) return acc;
+    if (!("properties" in item)) return acc; // PartialPageObjectResponse인 경우
 
     const { id, icon, cover } = item;
     const { Tags, Date, Description, Name } = item.properties;

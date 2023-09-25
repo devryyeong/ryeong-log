@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const databaseItems = await getDatabaseItems(process.env.DATABASE_ID);
 
   const parsedDatabaseItems = parseDatabaseItems(databaseItems);
-  console.log(parsedDatabaseItems);
+  
   return {
     props: {
       databaseItems: parsedDatabaseItems,
