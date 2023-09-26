@@ -1,4 +1,5 @@
 import { getDatabaseItems } from "@/cms/notionClient";
+import CardSection from "@/components/intro/CardSection";
 import TagHeroSection from "@/components/tags/TagHeroSection";
 import { getAllTags } from "@/utils/getAllTags";
 import { ParsedDatabaseItemType, parseDatabaseItems } from "@/utils/parseDatabaseItem";
@@ -18,6 +19,7 @@ const TagPage = ({ databaseItems, tagName }: TagPageProps) => {
   return (
     <>
       <TagHeroSection title={tagName} />
+      <CardSection cardItems={databaseItems} />
     </>
   );
 };
