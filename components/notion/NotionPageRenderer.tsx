@@ -65,7 +65,7 @@ const NotionPageRenderer = ({ recordMap }: NotionPageRendererProps) => {
         nextImage,
         propertyDateValue: (data) => data.data[0][1][0][1].start_date,
         propertySelectValue: ({ option: { id, color, value: name } }) => (
-          <TagItem key={id} tagItem={{ color, id, name, }} />
+          <TagItem key={id} tagItem={{ color, id, name }} />
         )
       }}
     />

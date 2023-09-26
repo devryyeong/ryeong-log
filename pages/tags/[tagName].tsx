@@ -18,7 +18,7 @@ interface TagPageParams extends ParsedUrlQuery {
 const TagPage = ({ databaseItems, tagName }: TagPageProps) => {
   return (
     <>
-      <TagHeroSection title={tagName} />
+      <TagHeroSection title={`#${tagName}`} />
       <CardSection cardItems={databaseItems} />
     </>
   );
