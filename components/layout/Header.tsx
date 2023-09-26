@@ -16,7 +16,7 @@ const navLinks = [
 const Header = () => {
   return (
     <>
-      <header className="bg-slate-400 fixed top-0 w-full z-50">
+      <header className="bg-slate-200 fixed top-0 w-full z-50">
         <nav className="p-4 flex flex-row justify-between max-w-5xl mx-auto">
           <h1 className="font-black text-4xl">
             <Link href={"/"}>RYEONG</Link>
