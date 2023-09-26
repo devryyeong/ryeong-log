@@ -47,7 +47,24 @@ const Modal = dynamic(
 );
 
 const NotionPageRenderer = ({ recordMap }: NotionPageRendererProps) => {
-  return <NotionRenderer recordMap={recordMap} fullPage disableHeader showTableOfContents components={{ Code, Collection, Equation, Pdf, Modal, nextLink, nextImage }} />;
+  return (
+    <NotionRenderer
+      recordMap={recordMap}
+      fullPage
+      disableHeader
+      showTableOfContents
+      components={{
+        Code,
+        Collection,
+        Equation,
+        Pdf,
+        Modal,
+        nextLink,
+        nextImage,
+        propertyDateValue: (value) => value.data[0][1][0][1].start_date,
+      }}
+    />
+  );
 };
 
 export default NotionPageRenderer;
