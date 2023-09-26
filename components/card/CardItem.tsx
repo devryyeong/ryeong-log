@@ -34,7 +34,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
           </div>
         </a>
       </Link>
-      {tags?.length >=0 ? <TagList tags={tags} /> : null}
+      {tags.length >=0 ? <TagList tags={tags} /> : null}
     </li>
   );
 }

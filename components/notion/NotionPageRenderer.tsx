@@ -4,7 +4,8 @@ import { NotionRenderer } from "react-notion-x";
 import { ExtendedRecordMap } from "notion-types";
 import nextLink from "next/link";
 import nextImage from "next/image";
-import TagItem from "../card/tag/tagItem";
+import TagItem from "../card/tag/TagItem";
+
 
 interface NotionPageRendererProps {
   recordMap: ExtendedRecordMap;

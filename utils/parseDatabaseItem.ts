@@ -3,12 +3,12 @@ import { MultiSelectPropertyItemObjectResponse, PageObjectResponse } from "@noti
 
 export interface ParsedDatabaseItemType {
   id: string;
-  cover?: string;
-  icon?: PageObjectResponse["icon"];
-  tags?: MultiSelectPropertyItemObjectResponse["multi_select"];
-  published?: string;
-  description?: string;
-  title?: string;
+  cover: string;
+  icon: PageObjectResponse["icon"];
+  tags: MultiSelectPropertyItemObjectResponse["multi_select"];
+  published: string;
+  description: string;
+  title: string;
 }
 
 // [util type]: return 값의 타입

@@ -1,5 +1,5 @@
 import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItem";
-import TagItem from "./tagItem";
+import TagItem from "./TagItem";
 
 interface TagListProps {
   tags: ParsedDatabaseItemType["tags"];
