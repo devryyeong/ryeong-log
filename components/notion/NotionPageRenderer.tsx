@@ -4,6 +4,7 @@ import { NotionRenderer } from "react-notion-x";
 import { ExtendedRecordMap } from "notion-types";
 import nextLink from "next/link";
 import nextImage from "next/image";
+import TagItem from "../card/tag/tagItem";
 
 interface NotionPageRendererProps {
   recordMap: ExtendedRecordMap;
@@ -61,7 +62,10 @@ const NotionPageRenderer = ({ recordMap }: NotionPageRendererProps) => {
         Modal,
         nextLink,
         nextImage,
-        propertyDateValue: (value) => value.data[0][1][0][1].start_date,
+        propertyDateValue: (data) => data.data[0][1][0][1].start_date,
+        propertySelectValue: ({ option: { id, color, value: name } }) => (
+          <TagItem key={id} tagItem={{ color, id, name, }} />
+        )
       }}
     />
   );
