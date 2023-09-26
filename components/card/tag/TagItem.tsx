@@ -12,7 +12,7 @@ const TagItem = ({ tagItem }: TagItemProps) => {
 
   return (
     <li>
-      <Link href={`tag/${name.toLowerCase()}`}>
+      <Link href={`/tag/${name.toLowerCase()}`}>
         <a
           className="hover:underline px-2 py-1 rounded-md font-light"
           style={{ backgroundColor: COLOR_TABLE[color], }}
