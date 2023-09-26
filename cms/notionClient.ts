@@ -3,6 +3,7 @@
  * 주로 블로그나 쇼핑몰에서 데이터를 가져올 때 사용하는 용어
  */
 import { Client } from "@notionhq/client";
+import { NotionAPI } from "notion-client";
 
 // Server side에서만 실행 가능
 export const notionClient = new Client({
@@ -27,4 +28,12 @@ export const getDatabaseItems = async (databaseId: string) => {
   });
 
   return response.results;
+};
+
+export const unofficialNotionClient = new NotionAPI();
+
+export const getPageContent = async (pageId: string) => {
+  const response = await unofficialNotionClient.getPage(pageId);
+
+  return response;
 };
