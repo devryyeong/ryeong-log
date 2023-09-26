@@ -37,6 +37,7 @@ export const getStaticProps: GetStaticProps<
     props: {
       recordMap,
     },
+    revalidate: 300,
   };
 };
 
@@ -53,6 +54,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   }
 }
