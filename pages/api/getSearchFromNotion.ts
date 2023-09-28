@@ -2,7 +2,7 @@ import { getSearchItems } from "@/cms/notionClient";
 import { ParsedDatabaseItemType, parseDatabaseItems } from "@/utils/parseDatabaseItem";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-interface GetSearchResponse {
+export interface GetSearchResponse {
   databaseItems: ParsedDatabaseItemType[];
 }
 
