@@ -1,14 +1,33 @@
-import React from 'react';
+import { useRouter } from "next/router";
+import React, { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
+interface SearchInputSectionProps {
+  //
+}
 const SearchInputSection = () => {
+  const [value, setValue] = useState('');
+  const { push } = useRouter();
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // 맨앞,뒤 공백 제거
+    const trimmedValue = value.trim();
+    if (!trimmedValue) return;
+
+    push(`/search?query=${trimmedValue}`);
+  };
+
   return (
     <section className="bg-black">
       <div className="w-4/5 max-w-5xl mx-auto py-16">
-        <form className="relative">
+        <form className="relative" onSubmit={onSubmit}>
           <input
             type="text"
             className="w-full outline-none p-2 text-xl rounded-xl"
+            value={value}
+            onChange={(e)=> setValue(e.target.value)}
           />
           <button
             type="submit"
