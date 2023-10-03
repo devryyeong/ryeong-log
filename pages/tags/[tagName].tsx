@@ -1,4 +1,5 @@
 import { getDatabaseItems } from "@/cms/notionClient";
+import { ITEMS_PER_PAGE } from "@/components/constant/pagenation";
 import CardSection from "@/components/intro/CardSection";
 import TagHeroSection from "@/components/tags/TagHeroSection";
 import { getAllTags } from "@/utils/getAllTags";
@@ -9,17 +10,18 @@ import { ParsedUrlQuery } from "querystring";
 interface TagPageProps {
   databaseItems: ParsedDatabaseItemType[];
   tagName: string;
+  totalLength: number;
 }
 
 interface TagPageParams extends ParsedUrlQuery {
   tagName: string;
 }
 
-const TagPage = ({ databaseItems, tagName }: TagPageProps) => {
+const TagPage = ({ databaseItems, tagName, totalLength }: TagPageProps) => {
   return (
     <>
       <TagHeroSection title={`#${tagName}`} />
-      <CardSection cardItems={databaseItems} />
+      <CardSection cardItems={databaseItems} totalLength={totalLength} />
     </>
   );
 };
@@ -43,12 +45,15 @@ export const getStaticProps: GetStaticProps<TagPageProps, TagPageParams> = async
     },
   });
 
-  const parsedDatabaseItems = parseDatabaseItems(databaseItems);
+  const parsedDatabaseItems = parseDatabaseItems(
+    databaseItems.slice(0, ITEMS_PER_PAGE)
+  );
 
   return {
     props: {
       databaseItems: parsedDatabaseItems,
       tagName: pascalTagName,
+      totalLength: databaseItems.length,
     },
   };
 };

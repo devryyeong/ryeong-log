@@ -16,7 +16,7 @@ const Pagenation = ({ totalPage }: PagenationProps) => {
     <div>
       <ul className="flex flex-row gap-2">
         <li>
-          <PagenationItem to={currentPage - 1} value="&lt;" />
+          <PagenationItem to={currentPage - 1} value="&lt;" disabled={currentPage === 1} />
         </li>
 
         {Array.from(
@@ -33,7 +33,7 @@ const Pagenation = ({ totalPage }: PagenationProps) => {
           ) : null
         )}
         <li>
-          <PagenationItem to={currentPage + 1} value="&gt;" />
+          <PagenationItem to={currentPage + 1} value="&gt;" disabled={currentPage === totalPage} />
         </li>
       </ul>
     </div>
@@ -71,7 +71,7 @@ const PagenationItem = ({ to, value, disabled = false, active = false }: Pagenat
       }}
     >
       <button
-        className={`px-4 py-2 text-gray-500 rounded-lg hover:bg-gray-100 hover:text-black ${
+        className={`px-4 py-2 text-gray-500 rounded-lg hover:bg-gray-100 hover:text-black disabled:text-gray-300 disabled:cursor-not-allowed ${
           active ? "bg-gray-100 text-black" : ""
         }`}
         disabled={disabled}
