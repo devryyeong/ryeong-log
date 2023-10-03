@@ -3,11 +3,14 @@ import { ITEMS_PER_PAGE } from "@/components/constant/pagenation";
 import CardSection from "@/components/intro/CardSection";
 import TagHeroSection from "@/components/tags/TagHeroSection";
 import { getAllTags } from "@/utils/getAllTags";
-import { ParsedDatabaseItemType, parseDatabaseItems } from "@/utils/parseDatabaseItem";
+import {
+  ParsedDatabaseItemType,
+  parseDatabaseItems,
+} from "@/utils/parseDatabaseItem";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 
-interface TagPageProps {
+export interface TagPageProps {
   databaseItems: ParsedDatabaseItemType[];
   tagName: string;
   totalLength: number;
@@ -28,9 +31,10 @@ const TagPage = ({ databaseItems, tagName, totalLength }: TagPageProps) => {
 
 export default TagPage;
 
-export const getStaticProps: GetStaticProps<TagPageProps, TagPageParams> = async ({
-  params
-}) => {
+export const getStaticProps: GetStaticProps<
+  TagPageProps,
+  TagPageParams
+> = async ({ params }) => {
   const { tagName } = params!;
 
   /**
