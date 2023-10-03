@@ -1,13 +1,11 @@
 import { useRouter } from "next/router";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
-interface SearchInputSectionProps {
-  //
-}
 const SearchInputSection = () => {
   const [value, setValue] = useState('');
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+  const searchQuery = query.query?.toString()
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,6 +16,11 @@ const SearchInputSection = () => {
 
     push(`/search?query=${trimmedValue}`);
   };
+
+  useEffect(() => {
+    setValue(searchQuery ?? "");
+  }, [searchQuery]);
+  
 
   return (
     <section className="bg-black">
