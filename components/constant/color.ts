@@ -11,3 +11,4 @@ export const COLOR_TABLE = {
   red: "#FEE2DD",
   default: "#F5EEDC",
 };
+
