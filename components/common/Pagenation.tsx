@@ -14,7 +14,7 @@ const Pagenation = ({ totalPage }: PagenationProps) => {
 
   return (
     <div>
-      <ul className="flex flex-row gap-2">
+      <ul className="flex flex-row gap-2 justify-center">
         <li>
           <PagenationItem to={currentPage - 1} value="&lt;" disabled={currentPage === 1} />
         </li>

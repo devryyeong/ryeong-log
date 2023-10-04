@@ -66,6 +66,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const parsedDatabaseItems = parseDatabaseItems(databaseItems);
 
+  // 모든 태그들의 name, id를 하나씩 가져와서 필터링을 해주는데, 이 태그를 가진 글이 몇 개인지를 객체로 리턴
+  // {
+  //   'web': 3,
+  //   'react': 2,
+  // }
   const lengthByTags = allTags.reduce<Record<string, number>>(
     (acc, { name, id }) => {
       const tagItems = parsedDatabaseItems.filter(
@@ -79,6 +84,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
     {}
   );
 
+  // flatMap: 2차원 배열을 1차원 배열로
+  // [['web, 1', 'web, 2'], ['react, 1', 'react, 2'], ['frontend, 1']]
+  // ->
+  // ['web, 1', 'web, 2', 'react, 1', 'react, 2', 'frontend, 1']
   const paths = allTags.flatMap(({ name: tagName }) =>
     Array.from(
       { length: Math.ceil(lengthByTags[tagName] / ITEMS_PER_PAGE) },
@@ -90,7 +99,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       })
     )
   );
-  
+
   // {
   //   parmas: {
   //     tagName: string,
@@ -100,5 +109,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths,
     fallback: "blocking",
-  }
-}
+  };
+};
+
+// dynamic route의 dynamic route(getStaticPaths) 정말 복잡하구나
