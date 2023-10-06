@@ -3,6 +3,7 @@ import { ITEMS_PER_PAGE } from "@/components/constant/pagenation";
 import CardSection from "@/components/intro/CardSection";
 import HeroSection from "@/components/intro/HeroSection";
 import { ParsedDatabaseItemType, parseDatabaseItems } from "@/utils/parseDatabaseItem";
+import { insertPreviewImage } from "@/utils/previewImage";
 import { GetStaticProps } from "next";
 
 export interface HomeProps {
@@ -35,9 +36,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const parsedDatabaseItems = parseDatabaseItems(databaseItems.slice(0, ITEMS_PER_PAGE));
   
+  const parsedDatabaseItemsWithPreview = await insertPreviewImage(
+    parsedDatabaseItems
+  );
+  
   return {
     props: {
-      databaseItems: parsedDatabaseItems,
+      databaseItems: parsedDatabaseItemsWithPreview,
       totalLength: databaseItems.length,
     },
     revalidate: 300,

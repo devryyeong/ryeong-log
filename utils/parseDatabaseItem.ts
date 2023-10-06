@@ -1,5 +1,6 @@
 import { getDatabaseItems } from "@/cms/notionClient";
 import { MultiSelectPropertyItemObjectResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { MakePreviewImageType } from "./previewImage";
 
 export interface ParsedDatabaseItemType {
   id: string;
@@ -9,6 +10,7 @@ export interface ParsedDatabaseItemType {
   published: string;
   description: string;
   title: string;
+  previewImage?: MakePreviewImageType;
 }
 
 // [util type]: return 값의 타입

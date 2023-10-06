@@ -6,6 +6,7 @@ import { getDatabaseItems } from "@/cms/notionClient";
 import { parseDatabaseItems } from "@/utils/parseDatabaseItem";
 import { ITEMS_PER_PAGE } from "@/components/constant/pagenation";
 import { getAllTags } from "@/utils/getAllTags";
+import { insertPreviewImage } from "@/utils/previewImage";
 
 const TagWithPage = ({ databaseItems, tagName, totalLength }: TagPageProps) => {
   return (
@@ -49,9 +50,13 @@ export const getStaticProps: GetStaticProps<
     )
   );
 
+  const parsedDatabaseItemsWithPreview = await insertPreviewImage(
+    parsedDatabaseItems
+  );
+
   return {
     props: {
-      databaseItems: parsedDatabaseItems,
+      databaseItems: parsedDatabaseItemsWithPreview,
       tagName: pascalTagName,
       totalLength: databaseItems.length,
     },

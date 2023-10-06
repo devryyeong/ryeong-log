@@ -5,6 +5,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getDatabaseItems } from "@/cms/notionClient";
 import { parseDatabaseItems } from "@/utils/parseDatabaseItem";
 import { ITEMS_PER_PAGE } from "@/components/constant/pagenation";
+import { insertPreviewImage } from "@/utils/previewImage";
 
 const HomeWithPage = ({ databaseItems, totalLength }: HomeProps) => {
   return <Home databaseItems={databaseItems} totalLength={totalLength} />;
@@ -25,9 +26,13 @@ export const getStaticProps: GetStaticProps<HomeProps, HomeWithPageParams> = asy
     databaseItems.slice((parseInt(page) -1) * ITEMS_PER_PAGE, parseInt(page) * ITEMS_PER_PAGE)
   );
 
+  const parsedDatabaseItemsWithPreview = await insertPreviewImage(
+    parsedDatabaseItems
+  );
+
   return {
     props: {
-      databaseItems: parsedDatabaseItems,
+      databaseItems: parsedDatabaseItemsWithPreview,
       totalLength: databaseItems.length,
     },
     revalidate: 300,
