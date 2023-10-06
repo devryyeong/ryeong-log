@@ -39,8 +39,10 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: {
-      recordMap,
-      preview_images: previewImage,
+      recordMap: {
+        ...recordMap,
+        preview_images: previewImage,
+      }
     },
     revalidate: 300,
   };
