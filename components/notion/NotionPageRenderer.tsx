@@ -55,6 +55,7 @@ const NotionPageRenderer = ({ recordMap }: NotionPageRendererProps) => {
       fullPage
       disableHeader
       showTableOfContents
+      previewImages={!!recordMap?.preview_images}
       components={{
         Code,
         Collection,
