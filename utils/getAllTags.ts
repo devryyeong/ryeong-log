@@ -1,7 +1,7 @@
 import { getDatabaseItems } from "@/cms/notionClient";
 import { MultiSelectPropertyItemObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-export interface AllTagsType { }
+export interface AllTagsType {}
 
 export const getAllTags = (
   items: Awaited<ReturnType<typeof getDatabaseItems>>
@@ -14,12 +14,16 @@ export const getAllTags = (
     const { Tags } = item.properties;
 
     const tags = Tags.type === "multi_select" ? Tags.multi_select : [];
+    console.log("tags", tags);
 
-    tags.forEach((tag) => {
-      const isAlreadyExist = acc.findIndex((accTag) => accTag.id === tag.id) > -1;
+    if (Array.isArray(tags)) {
+      tags.forEach((tag) => {
+        const isAlreadyExist =
+          acc.findIndex((accTag) => accTag.id === tag.id) > -1;
 
-      if (!isAlreadyExist) acc.push(tag);
-    });
+        if (!isAlreadyExist) acc.push(tag);
+      });
+    }
 
     return acc;
   }, []);
