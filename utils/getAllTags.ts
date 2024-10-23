@@ -14,7 +14,6 @@ export const getAllTags = (
     const { Tags } = item.properties;
 
     const tags = Tags.type === "multi_select" ? Tags.multi_select : [];
-    console.log("tags", tags);
 
     if (Array.isArray(tags)) {
       tags.forEach((tag) => {
