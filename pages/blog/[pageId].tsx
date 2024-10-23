@@ -18,7 +18,6 @@ interface DetailBlogPageParams extends ParsedUrlQuery {
 }
 
 const DetailBlogPage = ({ recordMap }: DetailBlogPageProps) => {
-  console.log('recordMap: ', recordMap)
   return (
     <>
       <NotionPageRenderer recordMap={recordMap} />

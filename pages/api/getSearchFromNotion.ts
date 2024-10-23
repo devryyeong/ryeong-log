@@ -19,7 +19,5 @@ export default async function handler(
 
   const parsedSearchItems = parseDatabaseItems(searchItems);
 
-  console.log("parsedSearchItems: ", parsedSearchItems);
-
   res.status(200).json({ databaseItems: parsedSearchItems });
 }
